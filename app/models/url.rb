@@ -21,7 +21,7 @@ class Url < ApplicationRecord
   end
 
   def generate_short_url
-    self.short_url = "http://127.0.0.1/#{SecureRandom.hex(4)}"
+    self.short_url = "#{Rails.application.secrets[:base_url]}/#{SecureRandom.hex(4)}"
   end
 
   def full_uri_query(full_uri)

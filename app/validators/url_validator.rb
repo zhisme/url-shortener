@@ -22,6 +22,7 @@ class UrlValidator < ActiveModel::Validator
   def validate_long_url(long_url)
     return if long_url =~ URI::DEFAULT_PARSER.make_regexp
     return if URI.parse(long_url).host.present?
-    record.errors[:long_url] << 'Full url is invalid.'
+    record.errors[:long_url] << 'Long url is invalid.'
+    throw(:abort)
   end
 end
