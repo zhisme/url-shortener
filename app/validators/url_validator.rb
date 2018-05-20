@@ -16,7 +16,7 @@ class UrlValidator < ActiveModel::Validator
 
   def validate_uniq_sanitized(long_url)
     return unless Url.exists?(sanitized_url: record.sanitized_url_from_long_url(long_url))
-    record.errors[:sanitized_url] << 'Url is already presented in DB.'
+    record.errors[:long_url] << 'Url is already presented in DB.'
   end
 
   def validate_long_url(long_url)
